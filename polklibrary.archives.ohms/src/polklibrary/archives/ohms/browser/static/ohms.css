@@ -1,0 +1,38 @@
+.ohms-file {
+    display: none;
+}
+
+.pat-filter-alpha > span {
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+#ohms-repo-view label {
+    display: block;
+}
+#ohms-repo-view {
+    margin-bottom: 20px;
+}
+
+#ohms-repo-view  .ohms-file {
+    border: 1px solid #ccc;
+    border-bottom: 0 none;
+    padding: 10px;
+}
+#ohms-repo-view  .ohms-file:last-child {
+    border-bottom: 1px solid #ccc;
+}
+#ohms-results{
+    padding-top: 10px;
+}
+
+#ohms-results .ohms-edit {
+    color: darkorange;
+    font-style: italic;
+}
+
+.pat-shortner .showmore {
+    cursor: pointer;
+    margin-left: 5px;
+    font-weight: bold;
+}

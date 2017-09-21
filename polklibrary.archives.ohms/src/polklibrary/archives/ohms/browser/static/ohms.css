@@ -19,8 +19,8 @@
     border-bottom: 0 none;
     padding: 10px;
 }
-#ohms-repo-view  .ohms-file:last-child {
-    border-bottom: 1px solid #ccc;
+#ohms-repo-view  .ohms-end-bar {
+    border-top: 1px solid #ccc;
 }
 #ohms-results{
     padding-top: 10px;

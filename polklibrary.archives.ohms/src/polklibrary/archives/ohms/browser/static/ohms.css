@@ -22,6 +22,13 @@
 #ohms-repo-view  .ohms-end-bar {
     border-top: 1px solid #ccc;
 }
+#search-by-subject{
+    width: 80%;
+}
+#search-by-text{
+    width: 80%;
+}
+
 #ohms-results{
     padding-top: 10px;
 }

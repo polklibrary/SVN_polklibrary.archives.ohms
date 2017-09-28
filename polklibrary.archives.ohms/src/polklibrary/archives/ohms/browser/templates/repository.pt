@@ -34,7 +34,7 @@
             </div>
             
             
-            <div class="col-50">
+            <div class="col-25">
                 
                 <label>By Subject</label>
                 <select id="search-by-subject" class="pat-filter-selector">
@@ -45,16 +45,24 @@
                 </select>
             </div>
             
-            <div class="col-100" id="ohms-results">
+            <div class="col-25">
+                
+                <label>By Search</label>
+                <input id="search-by-text" class="pat-filter-searchtext" type="text" placeholder="e.g. retirement" />
+            </div>
             
-                <div class="ohms-file"
+            <div class="clear"></div>
+            
+            <div class="col-100" id="ohms-results" >
+            
+                <div class="ohms-file pat-filter-alpha-result"
                      tal:repeat="brain view/get_files_brains"
                      data-subject_headings="${brain/Subjects}" 
                      data-abc="${brain/last_name_initial}"
                 >
-                    <a href="http://polk.uwosh.edu/ohms/viewer.php?cachefile=${brain/xmlPath}">${brain/Title}</a>
+                    <a class="ohms-title" href="http://polk.uwosh.edu/ohms/viewer.php?cachefile=${brain/xmlPath}">${brain/Title}</a>
                     <a class="ohms-edit" tal:condition="view/hasPermission" href="${brain/getURL}/edit">(Edit)</a>
-                    <div class="pat-shortner">${brain/Description}</div>
+                    <div class="ohms-desc pat-shortner">${brain/Description}</div>
                 </div>
                 <div class="ohms-end-bar"></div>
                 

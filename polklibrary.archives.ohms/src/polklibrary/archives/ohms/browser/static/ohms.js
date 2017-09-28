@@ -4,7 +4,14 @@ var OHMS = {
 
 
     pattern_alpha : function() {
-        var abcs = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','all']
+        // var abcs = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','all'];
+        var abcs = {};
+        $('.pat-filter-alpha-result').each(function(i, e){
+            var abc = $(this).attr('data-abc');
+            abcs[abc] = abc;
+        });
+        abcs['all'] = 'all';
+    
     
         $('.pat-filter-alpha').each(function(){
         
@@ -15,9 +22,9 @@ var OHMS = {
                     $('#ohms-results .ohms-file').each(function(){
                         $(this).hide();
                         if ($(this).attr('data-abc') == $(o).attr('data-abc'))
-                            $(this).show();
+                            $(this).fadeIn(250);
                         else if ($(o).attr('data-abc') == 'all')
-                            $(this).show();
+                            $(this).fadeIn(250);
                     });
                     
                     
@@ -39,10 +46,28 @@ var OHMS = {
                 $('#ohms-results .ohms-file').each(function(){
                     $(this).hide();
                     if ($(this).attr('data-subject_headings').indexOf(selected) != -1)
-                        $(this).show();
+                        $(this).fadeIn(250);
                 });
                 
                 OHMS.pattern_shortner_hide_all();
+            });
+        });
+    
+    },
+    
+    pattern_searchtext : function() {
+        $('input.pat-filter-searchtext').each(function(){
+            
+            $(this).keyup(function(){
+                var query = $(this).val().toLowerCase();
+                $('#ohms-results .ohms-file').each(function(){
+                    $(this).hide();
+                    if ($(this).attr('data-subject_headings').toLowerCase().indexOf(query) != -1 || 
+                        $(this).find('.ohms-title').text().toLowerCase().indexOf(query) != -1 || 
+                        $(this).find('.ohms-desc').text().toLowerCase().indexOf(query) != -1)
+                        $(this).fadeIn(250);
+                });
+                
             });
         });
     
@@ -52,7 +77,6 @@ var OHMS = {
     pattern_shortner: function() {
         $('.pat-shortner').each(function(){
             var text = $.trim($(this).text());
-            console.log(text);
             
             var first = text.substring(0, 140);
             var last = text.substring(140, text.length);
@@ -86,5 +110,6 @@ var OHMS = {
 $(document).ready(function(){
     OHMS.pattern_selector();
     OHMS.pattern_alpha();
+    OHMS.pattern_searchtext();
     OHMS.pattern_shortner();
 });

@@ -4,14 +4,29 @@ var OHMS = {
 
 
     pattern_alpha : function() {
+    
+        function compareStrings(a, b) {
+            // Assuming you want case-insensitive comparison
+            a = a.toLowerCase();
+            b = b.toLowerCase();
+
+            return (a < b) ? -1 : (a > b) ? 1 : 0;
+        }
+
+    
+    
         // var abcs = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','all'];
         var abcs = {};
         $('.pat-filter-alpha-result').each(function(i, e){
             var abc = $(this).attr('data-abc');
             abcs[abc] = abc;
         });
+        
+        abcs.sort(function(a, b) {
+            return (a < b) ? -1 : (a > b) ? 1 : 0;
+        })
         abcs['all'] = 'all';
-    
+        
     
         $('.pat-filter-alpha').each(function(){
         

@@ -25,6 +25,7 @@ src/polklibrary/archives/ohms/testing.py
 src/polklibrary/archives/ohms/browser/__init__.py
 src/polklibrary/archives/ohms/browser/configure.zcml
 src/polklibrary/archives/ohms/browser/ohmsfile.py
+src/polklibrary/archives/ohms/browser/patch_xml.py
 src/polklibrary/archives/ohms/browser/repository.py
 src/polklibrary/archives/ohms/browser/overrides/.gitkeep
 src/polklibrary/archives/ohms/browser/static/.gitkeep

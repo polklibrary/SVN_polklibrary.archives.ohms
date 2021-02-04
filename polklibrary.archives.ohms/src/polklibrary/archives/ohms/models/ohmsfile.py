@@ -4,7 +4,8 @@ from plone.namedfile.field import NamedBlobFile
 from plone.supermodel import model
 
 from plone.i18n.normalizer import idnormalizer
-#idnormalizer.normalize(entry['filmID'])
+
+from plone.indexer.decorator import indexer
 from zope import schema
 from zope.interface import provider, directlyProvides
 from zope.schema.interfaces import IContextSourceBinder
@@ -27,7 +28,7 @@ def repo_vocab(context):
             
         return SimpleVocabulary(voc)
     except Exception as e:
-        print "ERROR: " + str(e)
+        print("ERROR: " + str(e))
         return SimpleVocabulary([])
         
 directlyProvides(repo_vocab, IContextSourceBinder)
@@ -48,7 +49,7 @@ class IOHMSFile(model.Schema):
     subject_headings = schema.List(
             title=u"Subject Headings",
             required=False,
-            value_type=schema.Choice(source=repo_vocab,missing_value=''),
+            value_type=schema.Choice(source=repo_vocab, missing_value=''),
             missing_value=[],
         )
         
@@ -57,8 +58,13 @@ class IOHMSFile(model.Schema):
             required=False
         )
 
-    
-    
+
+""" Force subject_headings to be a certain format, not list """
+@indexer(IOHMSFile)
+def index_subject_headings(object, **kwargs):
+    return '\n'.join(object.subject_headings)
+        
+        
 
 
     

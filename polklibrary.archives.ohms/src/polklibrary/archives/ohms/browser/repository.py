@@ -33,7 +33,7 @@ class RepositoryView(BrowserView):
                                   sort_on="sortable_title")
                                   
         for brain in brains:
-            subjects = ' '.join(brain.subject_headings)
+            subjects = brain.subject_headings
             
             last_name_initial = 'a'
             if ',' in brain.Title:

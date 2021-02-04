@@ -4,4 +4,6 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="polklibrary.archives.ohms">
 
+    <adapter name="subject_headings" factory=".ohmsfile.index_subject_headings" />
+	
 </configure>

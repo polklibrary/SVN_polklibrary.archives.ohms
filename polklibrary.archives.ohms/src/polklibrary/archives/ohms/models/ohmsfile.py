@@ -62,8 +62,9 @@ class IOHMSFile(model.Schema):
 """ Force subject_headings to be a certain format, not list """
 @indexer(IOHMSFile)
 def index_subject_headings(object, **kwargs):
-    return '\n'.join(object.subject_headings)
-        
+    if object.subject_headings:
+        return '\n'.join(object.subject_headings)
+    return ''   
         
 
 

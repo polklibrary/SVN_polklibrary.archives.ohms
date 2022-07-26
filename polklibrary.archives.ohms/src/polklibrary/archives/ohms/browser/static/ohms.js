@@ -1,7 +1,13 @@
 
 var OHMS = {
 
-
+    no_pattern_alpha : function(){
+        if ($('.pat-filter-alpha').length == 0){
+            $('#ohms-results .ohms-file').each(function(){
+                $(this).show();
+            });
+        }
+    },
 
     pattern_alpha : function() {
     
@@ -24,7 +30,9 @@ var OHMS = {
                 var span = $('<span>').text(abc.toUpperCase()).attr('data-abc', abc).click(function(){
                     var o = this;
                     $('#ohms-results .ohms-file').each(function(){
+                        
                         $(this).hide();
+                        
                         if ($(this).attr('data-abc') == $(o).attr('data-abc'))
                             $(this).fadeIn(250);
                         else if ($(o).attr('data-abc') == 'all')
@@ -82,8 +90,8 @@ var OHMS = {
         $('.pat-shortner').each(function(){
             var text = $.trim($(this).text());
             
-            var first = text.substring(0, 140);
-            var last = text.substring(140, text.length);
+            var first = text.substring(0, 200);
+            var last = text.substring(200, text.length);
             
             var sm = $('<span>').addClass('showmore').html('Show more').click(function(){
                 $(this).parent().find('.showmore-content').show();
@@ -116,4 +124,5 @@ $(document).ready(function(){
     OHMS.pattern_alpha();
     OHMS.pattern_searchtext();
     OHMS.pattern_shortner();
+    OHMS.no_pattern_alpha();
 });

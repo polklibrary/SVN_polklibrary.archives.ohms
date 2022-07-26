@@ -28,4 +28,24 @@ class IRepository(model.Schema):
             required=False,
             default=u"",
         )
+                
+    show_by_alpha = schema.Bool(
+            title=u"Show By Alphabetical Option",
+            required=False,
+            default=True,
+            missing_value=True,
+        )
         
+    show_by_subject = schema.Bool(
+            title=u"Show By Subject Option",
+            required=False,
+            default=True,
+            missing_value=True,
+        )
+        
+    show_by_search = schema.Bool(
+            title=u"Show By Search Option",
+            required=False,
+            default=True,
+            missing_value=True,
+        )

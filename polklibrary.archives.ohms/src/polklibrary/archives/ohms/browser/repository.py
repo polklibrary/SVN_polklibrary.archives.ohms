@@ -26,6 +26,8 @@ class RepositoryView(BrowserView):
     def hasPermission(self):
         return checkPermission('cmf.ModifyPortalContent', self.context) or checkPermission('cmf.AddPortalContent', self.context) or checkPermission('cmf.ManagePortal ', self.context)
         
+        
+    
     def get_files_brains(self):
         results = []
         brains = api.content.find(context=self.context,
@@ -34,6 +36,7 @@ class RepositoryView(BrowserView):
                                   
         for brain in brains:
             subjects = brain.subject_headings
+            obj = brain.getObject()
             
             last_name_initial = 'a'
             if ',' in brain.Title:
@@ -47,6 +50,7 @@ class RepositoryView(BrowserView):
                 'Description': brain.Description,
                 'Subjects': subjects,
                 'getURL': brain.getURL(),
+                'has_image': obj.image != None,
                 'xmlPath': brain.getPath().replace('/archives/','').replace('/arch/','') + '?file=1',
                 'last_name_initial': last_name_initial,
             })

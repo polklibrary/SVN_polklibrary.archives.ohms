@@ -1,6 +1,6 @@
 from plone.autoform import directives
 from plone.autoform.interfaces import IFormFieldProvider
-from plone.namedfile.field import NamedBlobFile
+from plone.namedfile.field import NamedBlobFile, NamedBlobImage
 from plone.supermodel import model
 
 from plone.i18n.normalizer import idnormalizer
@@ -57,7 +57,12 @@ class IOHMSFile(model.Schema):
             title=u"OHMS XML File",  
             required=False
         )
-
+        
+    image = NamedBlobImage(
+            title=u"Image",
+            required=False,
+        )
+        
 
 """ Force subject_headings to be a certain format, not list """
 @indexer(IOHMSFile)

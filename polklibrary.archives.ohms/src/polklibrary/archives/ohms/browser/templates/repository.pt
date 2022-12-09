@@ -65,7 +65,7 @@
                      data-abc="${brain/last_name_initial}"
                 >
                     <div class="ohms-thumb" >
-                        <a tal:condition="brain/has_image" href="${brain/getURL}/@@images/image">
+                        <a tal:condition="brain/has_image" target="_blank" href="${brain/getURL}/@@images/image">
                             <img src="${brain/getURL}/@@images/image/tile" alt="Story Image Preview" />
                         </a>
                     </div>
